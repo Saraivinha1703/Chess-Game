@@ -4,7 +4,7 @@
     {
         public int Line { get; set; }
         public int Column { get; set; }
-        public Piece[,] Piece { get; set; }
+        public Piece[,] Piece { get; private set; }
 
         public Board()
         {

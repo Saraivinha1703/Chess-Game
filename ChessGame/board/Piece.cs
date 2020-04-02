@@ -2,10 +2,10 @@
 {
     class Piece
     {
-        public Color Color { get; set; }
+        public Color Color { get; protected set; }
         public Position Position { get; set; }
-        public int MovimentsAmt { get; set; }
-        public Board Board { get; set; }
+        public int MovimentsAmt { get; protected set; }
+        public Board Board { get; protected set; }
 
 
         public Piece()
