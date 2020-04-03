@@ -1,6 +1,6 @@
 ﻿namespace ChessGame.board
 {
-    enum Color
+   enum Color
     {
         Black,
         White,
@@ -8,6 +8,13 @@
         Red,
         Green,
         Brown,
-        Grey
+        Grey,
+        Pink,
+        Oranje,
+        Purple,
+        Violet,
+        Blue,
+        Magenta,
+        Cyan
     }
 }

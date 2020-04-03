@@ -13,15 +13,18 @@
         }
 
 
-        public Piece(Color color, Position position, Board board)
+        public Piece(Color color, Board board)
         {
             Color = color;
-            Position = position;
+            Position = null;
             Board = board;
             MovimentsAmt = 0;
         }
 
-
+        public void IncreaseAmtMoviments()
+        {
+            MovimentsAmt++;
+        }
 
     }
 }
