@@ -1,4 +1,6 @@
-﻿namespace ChessGame.board
+﻿using ChessGame.chess;
+
+namespace ChessGame.board
 {
     class Board
     {

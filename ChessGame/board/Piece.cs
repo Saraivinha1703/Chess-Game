@@ -1,6 +1,6 @@
 ﻿namespace ChessGame.board
 {
-    class Piece
+    abstract class Piece
     {
         public Color Color { get; protected set; }
         public Position Position { get; set; }
@@ -26,5 +26,32 @@
             MovimentsAmt++;
         }
 
+        public void DecreaseAmtMoviments()
+        {
+            MovimentsAmt--;
+        }
+        public bool ExistPossibleMoviments()
+        {
+            bool[,] mat = PossibleMoviments();
+
+            for (int i = 0; i < Board.Line; i++)
+            {
+                for (int j = 0; j < Board.Column; j++)
+                {
+                    if(mat[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool KeepingPosition(Position position)
+        {
+            return PossibleMoviments()[position.Line, position.Column];
+        }
+
+        public abstract bool[,] PossibleMoviments();
     }
 }
