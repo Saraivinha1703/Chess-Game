@@ -4,8 +4,10 @@ namespace ChessGame.chess
 {
     class Pawn : Piece
     {
-        public Pawn(Color color, Board board) : base(color, board)
+        private ChessMatch CM;
+        public Pawn(Color color, Board board, ChessMatch cm) : base(color, board)
         {
+            CM = cm;
         }
 
         public override string ToString()
@@ -54,6 +56,21 @@ namespace ChessGame.chess
                 {
                     mat[position.Line, position.Column] = true;
                 }
+
+                if(Position.Line == 3)
+                {
+                    Position left = new Position(Position.Line, Position.Column - 1);
+                    if (Board.ValidPosition(left) && ExistEnemy(left) && Board.piece(left) == CM.VulnerableEnPassant)
+                    {
+                        mat[left.Line - 1, left.Column] = true;
+                    }
+                    Position right = new Position(Position.Line, Position.Column + 1);
+                    if (Board.ValidPosition(right) && ExistEnemy(right) && Board.piece(right) == CM.VulnerableEnPassant)
+                    {
+                        mat[right.Line - 1, right.Column] = true;
+                    }
+                }
+
             }
             else
             {
@@ -80,6 +97,19 @@ namespace ChessGame.chess
                 if (Board.ValidPosition(position) && ExistEnemy(position))
                 {
                     mat[position.Line, position.Column] = true;
+                }
+                if (Position.Line == 4)
+                {
+                    Position left = new Position(Position.Line, Position.Column - 1);
+                    if (Board.ValidPosition(left) && ExistEnemy(left) && Board.piece(left) == CM.VulnerableEnPassant)
+                    {
+                        mat[left.Line + 1, left.Column] = true;
+                    }
+                    Position right = new Position(Position.Line, Position.Column + 1);
+                    if (Board.ValidPosition(right) && ExistEnemy(right) && Board.piece(right) == CM.VulnerableEnPassant)
+                    {
+                        mat[right.Line + 1, right.Column] = true;
+                    }
                 }
 
             }
